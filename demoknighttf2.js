@@ -22,7 +22,7 @@ const tclient = new tmi.client(options);
 tclient.connect();
 tclient.on('chat', function(channel, userstate, message, self) {
 	if (message == "!demoknighttf2") {
-		client.say(channel, userstate['display-name'] + " has praised the holy demoknight team fortress 2");
+		tclient.say(channel, userstate['display-name'] + " has praised the holy demoknight team fortress 2");
 	}
 });
 
