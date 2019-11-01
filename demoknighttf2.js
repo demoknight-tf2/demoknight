@@ -15,7 +15,7 @@ const options = {
 		username: "demoknight_tf2",
 		password: "oauth:q7det5pjtc8q6vqfcbtc6vclqlmz8o"
 	},
-	channels: ['SolarLightTF2']
+	channels: ['SolarLightTF2', 'MRswipez1']
 };
 
 const tclient = new tmi.client(options);
