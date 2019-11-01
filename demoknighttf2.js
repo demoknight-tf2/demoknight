@@ -1,7 +1,6 @@
-const Discord = require('discord.js');
+const discord = require('discord.js');
 const tmi = require('tmi.js');
-
-const client = new Discord.Client({disableEveryone: true});
+const commands = require('./commands.json');
 
 const options = {
 	connection: {
@@ -15,27 +14,85 @@ const options = {
 		username: "demoknight_tf2",
 		password: process.env.TWITCH
 	},
-	channels: ['SolarLightTF2', 'MRswipez1']
+	channels: ['SolarLightTF2']
 };
 
+const dclient = new discord.Client({disableEveryone: true});
 const tclient = new tmi.client(options);
 tclient.connect();
-tclient.on('chat', function(channel, userstate, message, self) {
-	if (message == "!demoknighttf2") {
-		tclient.say(channel, userstate['display-name'] + " has praised the holy demoknight team fortress 2");
-	}
-});
 
-client.on("ready", function() {
-	client.user.setActivity('demoknight tf2', {type: 'PLAYING'});
+dclient.on("ready", function() {
+	dclient.user.setActivity('demoknight tf2', {type: 'PLAYING'});
 	console.log("demoknight tf2");
 });
 
-client.on('message', async msg => {
-	if (msg.content.startsWith('!demoknighttf2')) {
-		msg.channel.send(msg.member.displayName + " has praised the holy demoknight team fortress 2");
+tclient.on('chat', (channel, userstate, message, self) => {
+	if (message.startsWith('!')) {
+		let response = command(message, userstate['display-name']);
+		if (response != "") tclient.say(channel, response);
+	}
+});
+
+dclient.on('message', (message) => {
+	if (message.content.startsWith('!')) {
+		let response = command(message.content, message.member.displayName);
+		if (response == "") return undefined;
+		else message.channel.send(response);
 	}
 	return undefined;
 });
 
-client.login(process.env.TOKEN);
+function command(msg, name) {
+	switch (msg) {
+		case "!demoknight":
+		case "!demoknighttf2":
+			return name + commands.demoknight;
+			break;
+		case "!hud":
+			return commands.hud;
+			break;
+		case "!sens":
+		case "!sensitivity":
+			return commands.sens;
+			break;
+		case "!discord":
+			return commands.discord;
+			break;
+		case "!youtube":
+			return commands.youtube;
+			break;
+		case "!ctgp":
+			return commands.ctgp;
+			break;
+		case "!div":
+		case "!division":
+			return commands.div;
+			break;
+		case "!donate":
+			return commands.donate;
+			break;
+		case "!funkykong":
+			return commands.funkykong;
+			break;
+		case "!ip":
+			return commands.ip;
+			break;
+		case "!posture":
+			return commands.posture;
+			break;
+		case "!scraptf":
+			return commands.scraptf;
+			break;
+		case "!viewmodel":
+			return commands.viewmodel;
+			break;
+		case "!commands":
+			return commands.commands;
+			break;
+		default:
+			return "";
+			break;
+	}
+}
+
+dclient.login(process.env.TOKEN);
