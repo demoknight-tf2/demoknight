@@ -9,11 +9,11 @@ const options = {
 		secure: true,
 	},
 	options: {
-		debug: true,
+		debug: false,
 	},
 	identity: {
 		username: "demoknight_tf2",
-		password: "oauth:q7det5pjtc8q6vqfcbtc6vclqlmz8o"
+		password: process.env.TWITCH
 	},
 	channels: ['SolarLightTF2', 'MRswipez1']
 };
