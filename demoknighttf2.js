@@ -28,14 +28,14 @@ dclient.on("ready", function() {
 
 tclient.on('chat', (channel, userstate, message, self) => {
 	if (message.startsWith('!')) {
-		let response = command(message, userstate['display-name']);
+		let response = command(message.toLowerCase(), userstate['display-name']);
 		if (response != "") tclient.say(channel, response);
 	}
 });
 
 dclient.on('message', (message) => {
 	if (message.content.startsWith('!')) {
-		let response = command(message.content, message.member.displayName);
+		let response = command(message.content.toLowerCase(), message.member.displayName);
 		if (response == "") return undefined;
 		else message.channel.send(response);
 	}

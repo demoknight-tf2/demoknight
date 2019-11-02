@@ -8,9 +8,9 @@
 	"div": "Solar's ETF2L division is Mid.",
 	"donate": "You can donate money or TF2 items via these links respectively: https://streamlabs.com/solarlighttf2 https://scrap.tf/tip/solarlighteroni",
 	"funkykong": "funky kong mario kart wii",
-	"ip": "Solar's community server: http://steam://connect/51.83.120.39:27016",
+	"ip": "Solar's community server: steam://connect/51.83.120.39:27016",
 	"posture": "Solar has his back bent over to resemble a ramp - he likes to trimp off them",
 	"scraptf": "https://scrap.tf/tip/solarlighteroni",
 	"viewmodel": "viewmodel_fov 70; tf_use_min_viewmodels 1",
-	"commands": "!ctgp, !demoknight, !discord, !div, !donate, !funkykong, !hud, !ip, !posture, !scraptf, !sens, !viewmodel, !youtube"
+	"commands": "!ctgp, !demoknighttf2, !discord, !div, !donate, !funkykong, !hud, !ip, !posture, !scraptf, !sens, !viewmodel, !youtube"
 }
